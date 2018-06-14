@@ -23,8 +23,6 @@ class Envato_Custompaymentmethod_Model_Paymentmethod extends Mage_Payment_Model_
     }
     public function getOrderPlaceRedirectUrl()
     {
-//        return 'https//www.portmone.com.ua/gateway/';
-        $this->_redirect('checkout/onepage/success', array('_secure'=>true));
-        return false;
+        return Mage::getUrl('checkout/onepage/success', array('_secure' => false));
     }
 }
