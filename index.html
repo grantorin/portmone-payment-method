@@ -2,19 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Portmone</title>
 </head>
 <body>
-<form action="https://www.portmone.com.ua/gateway/" method="post">
+<form id="portmoneForm" action="https://www.portmone.com.ua/gateway/" method="post">
     <input type="hidden" name="payee_id" value="1185" />
     <input type="hidden" name="shop_order_number" value="777" />
     <input type="hidden" name="bill_amount" value="100.00"/>
     <input type="hidden" name="description" value="Описание заказа"/>
-    <input type="hidden" name="success_url" value="http://mg.friendly.kiev.ua/payer-success" />
-    <input type="hidden" name="failure_url" value="http://mg.friendly.kiev.ua/payer-error" />
+    <input type="hidden" name="success_url" value="http://mg.friendly.kiev.ua/payment-success" />
+    <input type="hidden" name="failure_url" value="http://mg.friendly.kiev.ua/payment-error" />
     <input type="hidden" name="lang" value="ru" /> <!--ru, en, uk-->
     <!--<input type=”hidden” name=”encoding” value=”UTF-8” />-->
-    <input type="submit" value="Оплатить" />
+    <!--<input type="submit" value="Оплатить" />-->
 </form>
+<button id="payButton">Place Order</button>
+<script>
+    jQuery(document).ready(function($) {
+        $('#payButton').on('click', function(event) {
+            $('#portmoneForm').submit();
+
+        });
+    });
+</script>
 </body>
 </html>
