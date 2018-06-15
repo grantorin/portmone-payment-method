@@ -47,6 +47,11 @@ if($paymentcode === "custompaymentmethod" && $shopID):
     }
     $product_name = implode("; ", $product_name);
 
+    // Send Mail
+    try{ $order->sendNewOrderEmail();}
+    catch (Exception $ex) { echo "Email Not Sent..."; }
+    $customer = Mage::getSingleton('customer/session')->getCustomer();
+    $email = $customer->getEmail(); //End Email Sending
     ?>
     <div class="page-title">
         <h1 class="font-weight-bold fs-30 text-uppercase mb-5 mb-xl-6 mb-xxl-7"><?= $this->__('Your order has been received and will be processed after payment') ?></h1>
